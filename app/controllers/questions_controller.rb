@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   include QuestionsHelper
   include AuthorizeUser
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy,:answer]
 
   # GET /questions
   # GET /questions.json
