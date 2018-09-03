@@ -1,14 +1,12 @@
 class QuestionsController < ApplicationController
-  include AuthorizeUser
   include QuestionsHelper
+  include AuthorizeUser
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
-  # Params: ques_type - Subject/Topic/Exam , ques_id - name of any of the above 
   def index
-    questions = get_questions current_user.id,ques_type,
-    render json: questions
+    @questions = Question.all
   end
 
   # GET /questions/1
@@ -77,6 +75,14 @@ class QuestionsController < ApplicationController
       response[:errors] = @answer.errors.to_s
     end
     render json: response
+  end
+
+# Params: within[:ques_type] - Subject/Topic/Exam , within[:ques_id] - id of any of the above (Optional)
+  def question
+    ques_type = params[:within].try([:ques_type])
+    ques_id = params[:within].try([:ques_id])
+    questions = get_custom_ques current_user.id,ques_type,ques_id
+    render json: questions
   end
 
   private

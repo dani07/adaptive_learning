@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
   resources :questions do
     post :answer, :on => :member
+    get :question, :on => :collection
   end
 end
