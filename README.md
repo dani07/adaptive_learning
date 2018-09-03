@@ -13,10 +13,11 @@ an exam.
  * bundle install
  * rake db:create
  * rake db:migrate
- * rake db:seed
+ * rake db:seed 
 
 # API
 
+ * GET /users/sign_up - to sign a new user
  * GET /users/summary - to get the current_user's summary
  * GET /questions/question - to get a random question
  * POST /questions/1/answer - to answer a particular question

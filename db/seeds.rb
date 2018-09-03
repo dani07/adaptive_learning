@@ -58,10 +58,9 @@ end
 #Create questions and answers
 questions.each do|chapter,ques,ans,crt_ans,difficulty|
 	topic = Chapter.find_by_title chapter
-	question = topic.questions.new(:text => ques,:type => difficulty)
+	question = topic.questions.create(:text => ques,:type => difficulty)
 	ans.each do |answer|
-		answer_ent = question.answers.new(:text => answer) 
-		question.answer_id = answer_ent.id if crt_ans == answer
+		answer_ent = question.answers.create(:text => answer) 
+		question.update_attribute(:answer_id,  answer_ent.id) if crt_ans == answer
 	end
-	question.save
 end
