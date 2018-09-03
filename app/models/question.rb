@@ -2,6 +2,10 @@ class Question < ApplicationRecord
   self.inheritance_column = nil
   belongs_to :chapter
   has_many :answers
-  has_one :correct_answer, class_name: 'Answer'
   enum type: [:easy,:medium,:hard]
+
+  def correct_answer
+  	Answer.find_by_id answer_id 
+  end
+
 end

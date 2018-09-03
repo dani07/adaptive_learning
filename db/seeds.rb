@@ -61,7 +61,7 @@ questions.each do|chapter,ques,ans,crt_ans,difficulty|
 	question = topic.questions.new(:text => ques,:type => difficulty)
 	ans.each do |answer|
 		answer_ent = question.answers.new(:text => answer) 
-		question.correct_answer = answer_ent if crt_ans == answer
+		question.answer_id = answer_ent.id if crt_ans == answer
 	end
 	question.save
 end
