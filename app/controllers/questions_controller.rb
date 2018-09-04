@@ -81,8 +81,8 @@ class QuestionsController < ApplicationController
   def question
     ques_type = params[:within].try([:ques_type])
     ques_id = params[:within].try([:ques_id])
-    questions = get_custom_ques current_user.id,ques_type,ques_id
-    render json: questions
+    question = get_custom_ques current_user.id,ques_type,ques_id
+    render json: question
   end
 
   private

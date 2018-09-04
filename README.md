@@ -21,3 +21,7 @@ an exam.
  * GET /users/summary - to get the current_user's summary
  * GET /questions/question - to get a random question
  * POST /questions/1/answer - to answer a particular question
+
+# Test Cases
+
+ * rspec spec/controllers/questions_controller_spec.rb 
